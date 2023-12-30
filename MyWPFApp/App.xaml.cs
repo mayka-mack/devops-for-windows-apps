@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using MyWPFApp.Telemetry;
+﻿using System.Windows;
 
 namespace MyWPFApp
 {
@@ -14,9 +7,5 @@ namespace MyWPFApp
     /// </summary>
     public partial class App : Application
     {
-        public App()
-        {
-            DiagnosticsClient.Initialize();
-        }
     }
 }
