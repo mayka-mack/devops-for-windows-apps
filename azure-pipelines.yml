@@ -52,12 +52,12 @@ jobs:
       projects: '**/*.csproj'
       feedsToUse: 'select'
 
-  - task: MSBuild@1
+  - task: VSBuild@1
     displayName: Build for $(BuildConfiguration)
     inputs:
       solution: MyWPFApp.sln
       platform: x64
-      msbuildArguments: >
+      msbuildArgs: >
         /p:AppInstallerUri=$(DistributionUrl)
         /p:UapAppxPackageBuildMode=$(MsixBuildMode)
         /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
