@@ -53,7 +53,8 @@
     <!-- Generate architecture specific packages. Values: x86|x64|arm|arm64 -->
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <!-- App installer file base url -->
-    <AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>
+    <AppInstallerUri>X:/PackageTesting</AppInstallerUri>
+    <!--<AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>-->
     <AppxBundle>Always</AppxBundle>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>
@@ -61,6 +62,7 @@
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <NoWarn>$(NoWarn);NU1702</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -73,8 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
-      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Properties\PublishProfiles\Release-x64.pubxml</PublishProfile>
-      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x86'">Properties\PublishProfiles\Release-x86.pubxml</PublishProfile>
+      <PublishProfile>Properties\PublishProfiles\FrameworkDependent.pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
