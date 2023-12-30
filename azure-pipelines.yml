@@ -19,7 +19,8 @@ pr:
     - 'UITests/*'
 
 variables:
-  BuildConfiguration: Release
+  buildConfiguration: Release
+  buildPlatform: x64
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages'
 
@@ -41,27 +42,28 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Use .NET Core SDK 7.0.x'
+    displayName: Use .NET Core SDK
     inputs:
       version: 7.0.x
+      performMultiLevelLookup: true
 
   - task: DotNetCoreCLI@2
-    displayName: ".Net Restore"
+    displayName: .NET Restore
     inputs:
-      command: 'restore'
+      command: restore
       projects: '**/*.csproj'
-      feedsToUse: 'select'
+      feedsToUse: select
 
   - task: VSBuild@1
-    displayName: Build for $(BuildConfiguration)
+    displayName: 'Build for $(BuildConfiguration)'
     inputs:
-      solution: MyWPFApp.sln
-      platform: x64
+      solution: '*.sln'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
       msbuildArgs: >
         /p:AppInstallerUri=$(DistributionUrl)
         /p:UapAppxPackageBuildMode=$(MsixBuildMode)
         /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
-      configuration: $(BuildConfiguration)
       maximumCpuCount: false
 
   - task: CopyFiles@2
