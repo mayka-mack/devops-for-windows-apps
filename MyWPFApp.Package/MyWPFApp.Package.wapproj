@@ -72,10 +72,10 @@
     <Content Include="Package.appinstaller" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
-      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Properties\PublishProfiles\Release-x64.pubxml</PublishProfile>
-      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x86'">Properties\PublishProfiles\Release-x86.pubxml</PublishProfile>
-    </ProjectReference>
+      <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
+          <DesktopBridgeIdentifiers>win-x64;win-x86</DesktopBridgeIdentifiers>
+          <Properties>SelfContained=false;PublishSingleFile=false;PublishReadyToRun=false;RuntimeIdentifier=%(DesktopBridgeIdentifier)</Properties>
+      </ProjectReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>
