@@ -9,7 +9,6 @@
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     <PublishSingleFile>false</PublishSingleFile>
     <PublishReadyToRun>false</PublishReadyToRun>
-    <SelfContained>false</SelfContained>
   </PropertyGroup>
 
 </Project>
