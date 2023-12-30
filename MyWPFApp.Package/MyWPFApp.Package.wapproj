@@ -73,9 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
-      <DesktopBridgeIdentifiers>win-x64;win-x86</DesktopBridgeIdentifiers>
-      <Properties>SelfContained=false;RuntimeIdentifier=%(DesktopBridgeIdentifier);PublishReadyToRun=false</Properties>
-      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
+      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Properties\PublishProfiles\Release-x64.pubxml</PublishProfile>
+      <PublishProfile Condition="'$(Configuration)|$(Platform)'=='Release|x86'">Properties\PublishProfiles\Release-x86.pubxml</PublishProfile>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
