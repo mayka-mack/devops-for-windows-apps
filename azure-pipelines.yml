@@ -21,6 +21,7 @@ pr:
 variables:
   BuildConfiguration: Release
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages'
 
 jobs:
 - job: Build
@@ -49,11 +50,25 @@ jobs:
     inputs:
       solution: MyWPFApp.sln
       platform: x64
-      msbuildArguments: /restore /p:AppInstallerUri=$(DistributionUrl) /p:UapAppxPackageBuildMode=$(MsixBuildMode) /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
+      msbuildArguments: >
+        /restore
+        /p:AppInstallerUri=$(DistributionUrl)
+        /p:UapAppxPackageBuildMode=$(MsixBuildMode)
+        /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
       configuration: $(BuildConfiguration)
       maximumCpuCount: false
 
+  - task: CopyFiles@2
+    displayName: Copy files
+    inputs:
+      SourceFolder: '$(appxPackageDir)'
+      Contents: |
+        **\*.msixbundle
+        *.appinstaller
+      TargetFolder: MyWPFApp.Package/Bundle
+
   - task: PublishPipelineArtifact@0
+    displayName: Publish files
     inputs:
       artifactName: $(ChannelName)
-      targetPath: MyWPFApp.Package/AppPackages
+      targetPath: MyWPFApp.Package/Bundle
