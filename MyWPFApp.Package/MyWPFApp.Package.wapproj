@@ -74,9 +74,7 @@
     <Content Include="Package.appinstaller" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
-      <PublishProfile>Properties\PublishProfiles\FrameworkDependent.pubxml</PublishProfile>
-    </ProjectReference>
+    <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
 </Project>

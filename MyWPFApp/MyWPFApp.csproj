@@ -7,6 +7,9 @@
     <ApplicationIcon>win.ico</ApplicationIcon>
     <Platforms>x86;x64;AnyCPU</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
 
 </Project>
