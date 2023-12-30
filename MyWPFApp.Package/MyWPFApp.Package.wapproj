@@ -51,15 +51,16 @@
     <!-- Generate .appinstaller and HTML -->
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
     <!-- Generate architecture specific packages. Values: x86|x64|arm|arm64 -->
-    <AppxBundlePlatforms>x64;x86</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <!-- App installer file base url -->
     <AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>
-    <AppxBundle>Never</AppxBundle>
+    <AppxBundle>Always</AppxBundle>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
