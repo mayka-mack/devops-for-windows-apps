@@ -21,6 +21,7 @@ pr:
 variables:
   buildConfiguration: Release
   buildPlatform: x64
+  solution: '**\*.wapproj'
   distributionUrl: X:\PackageTesting
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages'
@@ -52,7 +53,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build for $(buildConfiguration)'
     inputs:
-      solution: '*.sln'
+      solution: '$(solution)'
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
       msbuildArgs: >
