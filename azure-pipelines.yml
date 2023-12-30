@@ -45,13 +45,19 @@ jobs:
     inputs:
       version: 5.0.x
 
+  - task: DotNetCoreCLI@2
+    displayName: ".Net Restore"
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+      feedsToUse: 'select'
+
   - task: MSBuild@1
     displayName: Build for $(BuildConfiguration)
     inputs:
       solution: MyWPFApp.sln
       platform: x64
       msbuildArguments: >
-        /restore
         /p:AppInstallerUri=$(DistributionUrl)
         /p:UapAppxPackageBuildMode=$(MsixBuildMode)
         /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
