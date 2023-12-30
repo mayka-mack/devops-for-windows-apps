@@ -53,8 +53,7 @@
     <!-- Generate architecture specific packages. Values: x86|x64|arm|arm64 -->
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <!-- App installer file base url -->
-    <AppInstallerUri>X:/PackageTesting</AppInstallerUri>
-    <!--<AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>-->
+    <AppInstallerUri></AppInstallerUri>
     <AppxBundle>Always</AppxBundle>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <EntryPointProjectUniqueName>..\MyWPFApp\MyWPFApp.csproj</EntryPointProjectUniqueName>

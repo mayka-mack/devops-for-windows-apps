@@ -21,24 +21,19 @@ pr:
 variables:
   buildConfiguration: Release
   buildPlatform: x64
+  distributionUrl: X:\PackageTesting
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages'
+  msixPackageId: MyWPFApp.DevOpsDemo.CD
+  msixPublisherId: CN=build
+  msixPackageDisplayName: MyWPFApp (CD)
+  msixBuildMode: SideLoadOnly
+  msixGenerateAppInstaller: true
 
 jobs:
 - job: Build
   pool:
     vmImage: windows-latest
-
-  strategy:
-    matrix:
-      Channel_CD_Web:
-        ChannelName: CD-Web
-        DistributionUrl: https://mywpfapp.azurewebsites.net/CD
-        MsixPackageId: MyWPFApp.DevOpsDemo.CD
-        MsixPublisherId: CN=build
-        MsixPackageDisplayName: MyWPFApp (CD)
-        MsixBuildMode: SideLoadOnly
-        MsixGenerateAppInstaller: true
 
   steps:
   - task: UseDotNet@2
@@ -55,15 +50,15 @@ jobs:
       feedsToUse: select
 
   - task: VSBuild@1
-    displayName: 'Build for $(BuildConfiguration)'
+    displayName: 'Build for $(buildConfiguration)'
     inputs:
       solution: '*.sln'
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
       msbuildArgs: >
-        /p:AppInstallerUri=$(DistributionUrl)
-        /p:UapAppxPackageBuildMode=$(MsixBuildMode)
-        /p:GenerateAppInstallerFile=$(MsixGenerateAppInstaller)
+        /p:AppInstallerUri=$(distributionUrl)
+        /p:UapAppxPackageBuildMode=$(msixBuildMode)
+        /p:GenerateAppInstallerFile=$(msixGenerateAppInstaller)
       maximumCpuCount: false
 
   - task: CopyFiles@2
@@ -78,5 +73,5 @@ jobs:
   - task: PublishPipelineArtifact@0
     displayName: Publish files
     inputs:
-      artifactName: $(ChannelName)
+      artifactName: drop
       targetPath: MyWPFApp.Package/Bundle
