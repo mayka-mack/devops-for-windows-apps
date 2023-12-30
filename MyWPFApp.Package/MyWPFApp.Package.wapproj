@@ -51,7 +51,7 @@
     <!-- Generate .appinstaller and HTML -->
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
     <!-- Generate architecture specific packages. Values: x86|x64|arm|arm64 -->
-    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64;x86</AppxBundlePlatforms>
     <!-- App installer file base url -->
     <AppInstallerUri>https://mywpfapp.z5.web.core.windows.net/CD</AppInstallerUri>
     <AppxBundle>Never</AppxBundle>
@@ -73,7 +73,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
       <DesktopBridgeSelfContained>True</DesktopBridgeSelfContained>
-      <DesktopBridgeIdentifier>win-x86</DesktopBridgeIdentifier>
+      <DesktopBridgeIdentifiers>win-x64;win-x86</DesktopBridgeIdentifiers>
       <Properties>SelfContained=%(DesktopBridgeSelfContained);RuntimeIdentifier=%(DesktopBridgeIdentifier);PublishReadyToRun=true</Properties>
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
     </ProjectReference>
