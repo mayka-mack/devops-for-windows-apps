@@ -75,8 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyWPFApp\MyWPFApp.csproj">
+      <DesktopBridgeSelfContained>false</DesktopBridgeSelfContained>
       <DesktopBridgeIdentifiers>win-x64;win-x86</DesktopBridgeIdentifiers>
-      <Properties>SelfContained=false;RuntimeIdentifier=%(DesktopBridgeIdentifier)</Properties>
+      <Properties>SelfContained=%(DesktopBridgeSelfContained);RuntimeIdentifier=%(DesktopBridgeIdentifier);PublishReadyToRun=false</Properties>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
